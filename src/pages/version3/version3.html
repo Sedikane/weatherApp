@@ -1,0 +1,77 @@
+<!--
+  Generated template for the Version3Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>version3</ion-title>
+    <ion-searchbar  [(ngModel)]="city" (search)="search()">
+      </ion-searchbar>
+  </ion-navbar>
+  <ion-item>
+      <ion-label></ion-label>
+      <ion-select [(ngModel)]="unit">
+        <ion-option [value]="k">Kelvins</ion-option>
+        <ion-option [value]="f">Farenheight</ion-option>
+        <ion-option [value]="c">celsius</ion-option>
+      </ion-select>
+    </ion-item>
+</ion-header>
+
+
+<ion-content padding>
+  
+    <button ion-button block (click)="myresu()">Results</button>
+
+    <div *ngIf="display==1">
+    <ion-grid *ngIf="info" no padding>
+      <ion-row>
+        <ion-col >
+            <div style="text-align: center; bottom: 60%;" class="centered">
+          <h1>Current Temperature</h1>
+        </div>
+        </ion-col>
+        <ion-col >
+          
+      <div style="text-align: center; bottom: 60%;" class="centered">
+          <h2>{{(info?.main.temp-273.15).toFixed(0)}}&#8451;</h2> 
+        </div>
+        </ion-col>
+        <ion-col>
+            <div style="text-align: right; bottom: 70%;" class="centered">
+                <h4> {{info?.weather[0].description }}</h4><br><br>
+        </div>
+          <br><br>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col >
+            <div class="split left">
+
+   <h1 style="position: absolute; left: 0; bottom: 40%;height: 5%">Min {{(info?.main.temp_min-273.15)}}&#8451;</h1><br><br>
+          </div>
+        </ion-col>
+        <ion-col>
+            <div class="split right">
+           <h1 style="position: absolute; right: 0; bottom: 40%;height: 5%">High {{(info?.main.temp_max-273.15)}}&#8451;</h1>
+                  </div>
+                </ion-col>
+
+      </ion-row>
+     
+    </ion-grid>
+    </div>
+
+     
+    <ion-refresher (ionRefresh)="doRefresh($event)"> 
+       <ion-refresher-content    pullingIcon="arrow-dropdown"   
+        pullingText="Pull to refresh"    
+        refreshingSpinner="circles"    
+        refreshingText="Refreshing...">  
+      </ion-refresher-content>
+    </ion-refresher>
+</ion-content>

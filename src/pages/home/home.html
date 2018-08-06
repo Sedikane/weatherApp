@@ -1,0 +1,70 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>WeatherApp</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>location</ion-label>
+    <ion-select [(ngModel)]="city">
+      <ion-option value="Pretoria">Pretoria</ion-option>
+      <ion-option value="Johannesburg">johannesburg</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button ion-button block (click)="myresu()">Results</button>
+
+  <div *ngIf="display==1">
+    <ion-grid>
+    
+    
+          <ion-row>
+            <ion-col>
+              Humidity
+            </ion-col>
+            <ion-col>
+              {{info?.main.humidity}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Presssure
+            </ion-col>
+            <ion-col>
+              {{info?.main.pressure}}
+            </ion-col>
+         
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Description
+            </ion-col>
+            <ion-col>
+              {{info?.weather[0].description}}
+             
+            </ion-col>
+         
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Temperature
+            </ion-col>
+            <ion-col>
+              {{info?.main.temp}}
+            </ion-col>
+         
+          </ion-row>
+        </ion-grid>
+        </div>
+
+</ion-content>
